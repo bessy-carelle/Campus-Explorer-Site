@@ -24,8 +24,16 @@ menuBtn.addEventListener('click', () => {
         menuBtn.classList.remove("open")
     }
 });
+<<<<<<< HEAD
 document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
     function checkSession() {
+=======
+document.querySelector(".petitbohomme").addEventListener("click", ()=>{
+    
+    
+    function checkSession() {
+        const user = localStorage.getItem("iduser");
+>>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
         const admin = localStorage.getItem("idadmin");
         const lastActive = localStorage.getItem('lastActive');
         const sessionTimeout = 30 * 60 * 1000; // 30 minutes d'inactivité
@@ -38,6 +46,11 @@ document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
             // Si la session a expiré (inactivité trop longue)
             alert("Votre session a expiré, veuillez vous reconnecter.");
             window.location.href = "../../Pages/welcome/connexion.html";  // Redirige vers la page de connexion
+<<<<<<< HEAD
+=======
+        } else if(user){
+            window.location.href="../../Pages/user/profil.html"
+>>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
         }else if(admin){
             window.location.href="../../Pages/admin/profil.html"
         }else {
