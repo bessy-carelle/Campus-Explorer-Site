@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Explorer</title>
+    <link rel="stylesheet" href="Style/index.css">
+    <link rel="stylesheet" href="Style/partage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <!-- Liste déroulante du menu -->
+        <nav class="menu-wrapper">
+            <button class="menu-btn">☰</button>
+            <ul class="menu-list flex-col flex-center" style="display: none;">
+                <li><a href="Pages/welcome/connexion.html">Connexion</a></li>
+                <li><a href="Pages/welcome/inscription.html">Inscription</a></li>
+		<li><a href="Pages/welcome/deconnexion.html">Deconnexion</a></li>
+            </ul>
+        </nav>
+
+        <!--Logo de l'unversité-->
+        <article class="logo-wrapper flex-col flex-center">
+            <img src="Images/logo.jpg" alt="Campus Explorer Logo">
+            <h1>Campus Explorer</h1>
+        </article>
+
+        <!-- icon profile de l'utilisateur -->
+        <article class="profile-icon-wrapper">
+            <img src="Images/profile-user.png" alt="" class="petitbohomme">
+        </article>
+    </header>
+
+    <main>
+        <article id="debut" class="debut">  <!--le commencement-->
+            <h1> Voulez-vous découvrir votre université?</h1>
+        </article>
+        
+        <section class ="spec" style="display: flex;">
+            <!--On fait la spécification du jeu(on explique a quoi le jeu va servir vis a vis des etudiant de la fac)-->
+            <article>
+                <h2>How is it played?</h2>
+                <p>
+                    CAMPUS Explorer est une application de jeu de piste photo qui invite les utilisateurs à parcourir le campus universitaire de l'UT2J et à trouver des endroits spécifiques données en photos.<br/>
+                    Le principe de base est le suivant : un administrateur publie des photos prises à différents endroits du campus, accompagnées d'indices que les utilisateurs doivent résoudre.<br/>
+                    Ces indices les aident à retrouver les lieux où les photos ont été prises. Une fois l'endroit trouvé, l'utilisateur prend une photo et la soumet pour validation.<br/> 
+                    Si la photo correspond à celle publiée par l'administrateur, elle est validée et l'utilisateur peut passer à l'étape suivante. 
+
+                </p>
+
+                <p>
+                    <h3 style="text-align: center;">Comment l'application fonctionne ?</h3>     
+                    Inscription et Connexion : L'utilisateur commence par créer un compte avec un mail valide et se connecter.<br/> 
+                    Sélection d'une photo : L'administrateur publie plusieurs photos, chaque photo représentant un lieu sur le campus.<br/> 
+                    L'utilisateur sélectionne une photo comme point de départ de son jeu de piste.<br/>    
+                    Recherche sur le campus : L'utilisateur explore le campus à la recherche du lieu représenté sur la photo. 
+                </p>
+
+                <p>
+                    Soumission d'une photo : Une fois le lieu trouvé, l'utilisateur prend une photo et la soumet pour <br/> 
+                    Validation de la photo : L'application utilisera un algorithme pour comparer la photo soumise avec celle d'origine. <br/>
+                    Si elles correspondent, l'administrateur devra lui à son tour validé la photo ainsi cette dernière sera publiée et l'utilisateur peut donc progresser dans le jeu.<br/>    
+                </p>
+
+                <p>
+                    Progression dans le jeu : L'utilisateur répète ces étapes jusqu'à la fin du jeu.<br/>
+                    À chaque photo validée, l'utilisateur a un score qui lui est attribué, au bout de 5 photos trouvées et à chaque photo posté les autres utilisateurs peuvent voter(aimer).<br/>
+                    Interface et expérience utilisateur : Le système propose une interface intuitive, avec des informations claires pour guider l'utilisateur sur les étapes du jeu.
+                </p>
+            </article>
+        </section>
+    
+        <section class="HOM-wrapper">
+            <h2>Voici les pistes du mois!</h2>
+    
+            <article class="imagedumois" >
+                
+            </article>
+    
+            <!--le boutton "Choisisez votre chasse" est un lien vers le jeu pour choisir les photos a aller rechercher sur la fac-->
+    
+                <button id="choixPiste" class="btn good-btn">Choisissez votre piste!</button>
+        </section> 
+    </main>
+    
+    <footer>
+        <a href="#debut"><img src="Images/right-arrow.png" alt=""></a>
+    </footer>
+    
+</body>
+</html>

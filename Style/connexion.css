@@ -1,0 +1,30 @@
+h1{
+    text-align: center;
+}
+.logo-wrapper img{
+    height: 50px;
+}
+
+footer p{
+    text-align: center;
+    font-size: 20PX;
+    text-decoration: none;
+}
+
+footer p a {
+    text-decoration: solid;
+    color: gray;
+}
+
+.pseudo-wrapper{
+    margin-bottom: 7%;
+    margin-top: 4%;
+}
+
+.mdp-wrapper{
+    margin-bottom: 7%;
+}
+
+.btn-connexion{
+    margin-bottom: 4%;
+}

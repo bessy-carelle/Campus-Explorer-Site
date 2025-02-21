@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Creer groupe</title>
+        <link rel="styleSheet" href="../../Style/user.css" media="all">
+        <link rel="styleSheet" href="../../Style/partage.css" media="all">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="../../Script/user/groupe.js"defer></script>
+    </head>
+    <body>
+        <header>
+            <nav class="menu-wrapper">
+                <button class="menu-btn" onclick="">☰</button>
+                <ul class="menu-list flex-col flex-centre"style="display: none;">
+                    <li><a href="../../index.html"> Accueil </a></li>
+                    <li><a href="../welcome/deconnexion.html">Deconnexion</a></li>
+                </ul>
+            </nav>
+
+            <article class="logo-wrapper pop-in-ecrit flex-col flex-center">
+                <img src="../../Images/logo.jpg" alt="Campus Explorer Logo">
+                <h1 class="poppin-police">Campus Explorer</h1>
+            </article>
+
+            <span class="circle"></span>
+        </header>
+        <section>
+            <article class="debut flex-center flex-col">
+                <h1 class="poppin-police flex-center">Group Play</h1>
+                <h2>Les Membres du Groupe</h2>
+                <ol>
+                    <li>Chasseur 1</li>
+                    <li>Chasseur 2</li>
+                    <li>Chasseur 3</li>
+                    <li>Chasseur 4</li>
+                </ol>
+                <div class=" ajout flex-center flex-row">
+                    <label for="new-member" class="label">Ajouter un membre: </label>
+                    <input type="text" class="input input-reg" placeholder="Nom Chasseur">
+                </div>
+                <span class="img-action plus flex-center">+</span>
+                <article>
+                    <button class="btn good-btn">Créer Groupe</button>
+                    <button class="bad-btn btn">Annuler</button>
+                </article>
+            </article> 
+        </section>
+    </body>
+</html>

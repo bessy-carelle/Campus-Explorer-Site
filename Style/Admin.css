@@ -1,0 +1,147 @@
+.logo-wrapper img{
+    height: 50px;
+}
+
+/* FOOTER PARTAGES */
+.footer .neutral-btn, .footer .ajout-cible-btn, .env-pdj-btn{
+    margin-right: 20px;
+}
+
+/* PAGE PROFIL ADMINISTRATEUR */
+.admin-info-wrapper p, .footer .neutral-btn{
+    margin-right: 10px;
+}
+
+.admin-info-wrapper h1{
+    font-size: 25px;
+}
+
+.cibles-dispo-photos-wrapper{
+    flex-wrap: wrap;
+    
+}
+
+.cibles-dispo-photos-wrapper .cible-wrapper img{
+    height: 370px;
+    width: auto;
+    margin: 10px;
+    border-radius: 15px;
+    border: 3px solid #111144;
+}
+
+
+.footer{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+/* PAGE AJOUTER CIBLE */
+
+
+
+.nom-wrapper label, 
+.ajout-photo-wrapper label,
+.ajout-indices-wrapper label, 
+.date-deb-wrapper label, 
+.date-fin-wrapper label,
+.id-admin-wrapper label{
+    margin-bottom: 10px;
+}
+
+.nom-wrapper,
+.ajout-photo-wrapper,
+.date-deb-wrapper,
+.date-fin-wrapper,
+.id-admin-wrapper,
+.ajout-indices-wrapper,
+.ajout-main form .footer{
+    margin: 30px;
+    padding: 20px;
+}
+
+.ajout-main h1{
+    text-align: center;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.ajout-main ol{
+    padding-left: 0;;
+}
+
+.ajout-photo-frame{
+    height: 100px;
+    padding: 30px;
+    border: 2px solid #111144;
+    border-radius: 7px;
+    background-color: #DAD1C8;
+}
+
+.ajout-photo-wrapper{
+    text-align: center;
+}
+
+.ajout-photo-wrapper a{
+    text-decoration: none;
+    color :#111144;
+}
+
+.input-indice-wrapper input{
+    margin-bottom: 4%;
+}
+
+/* PAGE CONSULTATION DEPOT */
+.consult-wrapper, .consult-traite-wrapper{
+    margin-top: 7%;
+}
+
+.consult-wrapper article, .consult-traite-wrapper article{
+    flex-wrap: wrap;
+}
+
+.cas-consult-wrapper, .cas-traite-wrapper{
+    padding: 20px;
+    margin: 30px;
+}
+
+.cas-traite-title, .cas-consult-title, .consult-title{
+    text-align: center;
+}
+
+
+/* FILTRAGE DEPOT PAGE */
+.filtre-cas-consult-wrapper article{
+    flex-wrap: wrap;
+}
+
+.filtre-cas-consult-wrapper p span {
+    font-weight: 600;
+}
+
+.clicked {
+    margin: 15px;
+    transition: ease-in 1s;
+    background-color: #9BACD8;
+    border: 3px solid #b8b6b3;
+    border-radius: 10px;
+    color : white;
+}
+
+.photo-dispo{
+    background-color: #F98513;
+    transition: ease-out background-color;
+    margin : 15px;
+    border-radius: 15px;
+    border: 3px solid #111144;
+}
+
+.photos-dispo-photos-wrapper{
+    flex-wrap: wrap;
+}
+
+.mess-wrapper{
+    padding : 0px 10px;
+    border-radius : 7px;
+    font-weight: 600;
+}
+

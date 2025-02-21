@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposer Cibles</title>
+    <link rel="styleSheet" href="../../Style/user.css" media="all">
+    <link rel="styleSheet" href="../../Style/partage.css" media="all">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="../../Script/user/proposerCible.js" defer></script>
+
+</head>
+<body>
+        <header>
+            <nav class="menu-wrapper">
+                <button class="menu-btn" onclick="">☰</button>
+                <ul class="menu-list flex-col flex-center"style="display: none;">
+                    <li><a href="../../index.html"> Accueil </a></li>
+                    <li><a href="../welcome/jeu.html"> Retourner au jeu </a></li>
+                    <li><a href="../welcome/deconnexion.html"> Déconnexion </a></li>
+                </ul>
+            </nav>
+            
+            <article class="logo-wrapper pop-in-ecrit flex-col flex-center">
+                <img src="../../Images/logo.jpg" alt="Campus Explorer Logo">
+                <h1 class="poppin-police">Campus Explorer</h1>
+            </article>
+
+                <!-- icon profile de l'utilisateur -->
+                <article class="profile-icon-wrapper">
+                    <img src="../../Images/profile-user.png" alt="" class="petitbohomme">
+                </article>        
+            </header>
+        <section class="flex-row flex-center">
+            <h1 class="poppin-police flex-center">Proposer cible</h1>
+            <article class="flex-row" sytle="flex-wrap: wrap; width: 100%">
+                <div class="name-cible form-ajust flex-center flex-col">
+                    <label for ="nom" class="label "> Nom: </label>
+                    <input type="text" class="nom input input-reg" name="nom poppin-police"id="nom" placeholder="Nom de Cible" required>
+                </div>
+                <div class="add-photo flex-center flex-col">
+                    <label for="ajout-photo" class="form-ajust label"> Ajout Photo:  </label>
+                    <div class ="upload-container flex-col flex-center">
+                        <div for="file-upload" class="upload-button flex-center">
+                            <span> Télécharger la photo</span>
+                            <img src="../../Images/icone-camera.png" alt="" class="camera-icon">
+                            <input id="file-upload" type="file" accept="image/*" style="display: none;"> 
+                            <p class="file-name texte"><em>Nom fichier</em></p>
+                        </div> 
+                    </div>
+                </div>
+                <div class="add-indices form-ajust flex-col">
+                    <label for="indices" class="label">Indices:</label>
+                    <article class="indicesCible flex-center flex-col">
+                        <input type="text" class="indices input-reg" name="indice" placeholder="Taper tes indices ici" required>
+                        <img src="../../Images/imgPlus.jpg" alt="" class="img-action" />
+                        <ol class="ol-indicesPlus"></ol>
+                    </article>
+                </div>
+                
+                <!-- <div class="remarques form-ajust flex-center flex-row">
+                    <label for="Rmq" class="label">Remarques:</label>
+                    <input type="text" class="indicesPlus input input-large" name="indice" placeholder="Laisser une remarque pour l'admin">
+                </div> -->
+            </article>
+            <article class="btn-execution flex-center">
+                <button type="button" class="btn bad-btn"  onclick="window.location.href = 'profil.html';"> Annuler </button>
+                <button type="submit" class="btn good-btn"> Valider </a> </button>
+            </article>
+        </section>
+
+</body>

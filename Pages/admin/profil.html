@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Admin</title>
+    
+    <link rel="stylesheet" href="../../Style/Admin.css">
+    <link rel="stylesheet" href="../../Style/partage.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="../../Script/admin/adminProfil.js" defer></script>
+</head>
+<body class="flex-col">
+    <header class="flex-row">
+        <!-- Liste déroulante du menu -->
+        <nav class="menu-wrapper">
+            <button class="menu-btn" onclick="">☰</button>
+            <ul class="menu-list flex-col flex-center" style="display: none;">
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><a href="../welcome/groupes.html">Groupes</a></li>
+                <li><a href="../welcome/jeu.html">Jeu</a></li>
+                <li><a href="../welcome/deconnexion.html"> Déconnexion </a></li>
+            </ul>
+        </nav>
+    
+        <!--Logo de l'unversité-->
+        <article class="logo-wrapper pop-in-ecrit flex-col flex-center">
+            <img src="../../Images/logo.jpg" alt="Campus Explorer Logo">
+            <h1 class="poppin-police">Campus Explorer</h1>
+        </article>
+    
+        <!-- icon profile de l'utilisateur -->
+        <article class="profile-icon-wrapper">
+            <img src="../../Images/profile-user.png" alt="">
+        </article>
+    </header>
+
+    <main>
+        <section class="admin-info-wrapper flex-row flex-center">
+            <p class="texte">Admin :</p>
+            <h1 class="admin-name">John Doe</h1>
+        </section>
+
+        <section class="cibles-dispo-wrapper flex-col flex-center">
+            <h1 class="cibles-dispo-lab"> Cibles Disponibles</h1>
+
+            <article class="cibles-dispo-photos-wrapper flex-center">
+                <!-- Cibles du MariaDB -->
+            </article>
+        </section>
+
+        <section class="flex-center footer">
+            <button type="button" class="btn neutral-btn gest-soum-btn poppin-police"
+                onclick="window.location.href = 'consultation_depot.html'">Gestion Soumissions</button>
+            <button type="button" class="btn good-btn ajout-cible-btn poppin-police"
+                onclick="window.location.href = 'ajout_cible.html'">Ajouter Cible</button>
+            <button type="button" class="btn good-btn photo-jr-btn poppin-police"
+                onclick="window.location.href = 'photo_du_jour.html'">Photo du Jour</button>
+        </section>
+    </main>
+</body>
+</html>

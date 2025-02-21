@@ -1,0 +1,76 @@
+/* .menu-btn{
+    background-color: #F4F1EC;
+} */
+
+/* Style pour centrer le formulaire et ses éléments */
+.logo-wrapper img{
+    height: 50px;
+}
+#Inscr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Hauteur ajustée pour laisser plus de place au header */
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    gap: 15px; /* Espace entre chaque champ */
+}
+
+form article {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style des champs de texte */
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Style du bouton ENREGISTRER */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px; /* Distance entre le bouton et les champs */
+}
+
+/* Style du footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+footer p {
+    font-size: 13px;
+    text-align: center;
+    margin: 0;
+}
+
+footer p a {
+    text-align: center;
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+}
