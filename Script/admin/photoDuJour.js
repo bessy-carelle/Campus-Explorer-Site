@@ -49,13 +49,7 @@ function handlePhotosHTML({dispo, nom , data, idCible}){
 
     let thisPhoto = document.querySelector(`#photo-${idCible}`)
     thisPhoto.addEventListener('click', function (){
-<<<<<<< HEAD
-        if (!this.classList.contains("dispo-one")){
-            this.classList.toggle("clicked");
-        }
-=======
-        if (!this.classList.contains("photo-dispo")) this.classList.toggle("clicked");
->>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
+        if (!this.classList.contains("dispo-one")) this.classList.toggle("clicked");
     })
 }
 
@@ -70,11 +64,7 @@ function handleAjoutPdJ(){
             let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php?idCible=${tag.id}`, {
                 method : "POST",
                 headers : {'Content-Type' : 'application/json'},
-<<<<<<< HEAD
-                body : {"idCible" : tag.id.substring(6)}
-=======
                 body : JSON.stringify({"idCible" : tag.id.substring(6)})
->>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
             });
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
             let reqJSON = await req.json();
@@ -103,27 +93,18 @@ function addMess(mess, bgColour, fgColour){
 
 document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
     function checkSession() {
-<<<<<<< HEAD
-=======
-        const user = localStorage.getItem("iduser");
->>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
         const admin = localStorage.getItem("idadmin");
         const lastActive = localStorage.getItem('lastActive');
         const sessionTimeout = 30 * 60 * 1000; // 30 minutes d'inactivité
         
         // Vérifie si un identifiant est présent (utilisateur ou administrateur)
-        if (!user && !admin) {
+        if (!admin) {
             alert("Vous devez être connecté pour accéder à cette page.");
             window.location.href = "../../Pages/welcome/connexion.html";  // Redirige vers la page de connexion
         } else if (lastActive && new Date().getTime() - lastActive > sessionTimeout) {
             // Si la session a expiré (inactivité trop longue)
             alert("Votre session a expiré, veuillez vous reconnecter.");
             window.location.href = "../../Pages/welcome/connexion.html";  // Redirige vers la page de connexion
-<<<<<<< HEAD
-=======
-        } else if(user){
-            window.location.href="../../Pages/user/profil.html"
->>>>>>> 9b4154e569c0a5cb4e2ecceac089c5fa5593a1c1
         }else if(admin){
             window.location.href="../../Pages/admin/profil.html"
         }else {
