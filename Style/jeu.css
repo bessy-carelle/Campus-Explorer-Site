@@ -1,0 +1,70 @@
+h1{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    font-size: 20px;
+    display:block;
+}
+
+.logo-wrapper img{
+    height: 50px;
+}
+
+.image-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.image-hover:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'image */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Ajoute une ombre subtile */
+}
+
+
+
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: center;
+}
+.flex-row img {
+    height: 370px;
+    width: auto;
+    margin: 10px;
+    border-radius: 15px;
+    border: 3px solid #111144;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#jeu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex; /* Utiliser flexbox pour mettre les articles sur la même ligne */
+    flex-wrap: wrap; /* Permettre aux articles de passer à la ligne si nécessaire */
+}
+
+
+footer {
+    text-align: center;          /* Centrer le texte */
+    margin-top: 20px;           /* Ajouter une marge en haut pour l'espace */
+}
+
+footer button{
+    background-color: black;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+footer a {
+    color:gray;
+    text-decoration:solid;
+}
+
+
+

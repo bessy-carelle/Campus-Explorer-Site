@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Cible</title>
+
+    <link rel="stylesheet" href="../../Style/Admin.css">
+    <link rel="stylesheet" href="../../Style/partage.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="../../Script/admin/ajoutCible.js" defer></script>
+</head>
+
+<body class="flex-col">
+    <header class="flex-row">
+        <!-- Liste déroulante du menu -->
+        <nav class="menu-wrapper">
+            <button class="menu-btn" onclick="">☰</button>
+            <ul class="menu-list flex-col flex-center" style="display: none;">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../welcome/groupes.html">Groupes</a></li>
+                <li><a href="../welcome/jeu.html">Jeu</a></li>
+                <li><a href="../welcome/deconnexion.html"> Déconnexion </a></li>
+
+            </ul>
+        </nav>
+    
+        <!--Logo de l'unversité-->
+        <article class="logo-wrapper pop-in-ecrit flex-col flex-center">
+            <img src="../../Images/logo.jpg" alt="Campus Explorer Logo">
+            <h1 class="poppin-police">Campus Explorer</h1>
+        </article>
+    
+        <!-- icon profile de l'utilisateur -->
+        <article class="profile-icon-wrapper">
+            <img src="../../Images/profile-user.png" alt="" onclick="window.location.href = 'profil.html'">
+        </article>
+    </header>
+
+    <main class="ajout-main flex-col">
+        <h1 class="page-title">Ajout Cible</h1>
+
+        <ol class="res-mes flex-center flex-col" style="display: none;"></ol>
+
+        <form action="https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/addHunt2.php" method="post"  enctype="multipart/form-data" class="flex-col flex-center">
+            <div class="flex-row flex-center">
+                <section class="nom-wrapper flex-col flex-center">
+                    <label class="label">Nom :</label>
+                    <input type="text" name="name" class="input input-reg" placeholder="Nom du Cible" required>
+                </section>
+
+                <section class="id-admin-wrapper flex-col flex-center">
+                    <label class="label">Id Admin :</label>
+                    <input type="number" name="admin" class="input input-reg" placeholder="Saisissez votre id">
+                </section>
+
+                <section class="ajout-photo-wrapper flex-col flex-center">
+                    <label class="label">Ajout Photo :</label>
+                    <div class="ajout-photo-frame flex-col flex-center">
+                        <p class="texte">Télécharger Photo</p>
+                        <img src="../../Images/camera.png" alt="" class="img-action">
+
+                        <input type="file" name="image"  style="display: none;" accept="image/*" required>
+                        <p class="texte file-name"><em>File name </em></p>
+
+                    </div>
+                </section>
+
+                <section class="ajout-indices-wrapper flex-col flex-center">
+                    <article class="flex-col flex-center">
+                        <label class="label">Indices :</label>
+
+                        <section class="input-indice-wrapper flex-col flex-center">
+                            <input type="text" class="input input-reg" name="indice" class="ajout-indice-input champ-input"
+                                placeholder="Saisissez les indices ici">
+
+                            <img src="../../Images/add-button.png" alt="" class="img-action" />
+                        </section>
+                    </article>
+
+                    <ol></ol>
+                </section>
+            </div>
+           
+
+            <section class="flex-center footer">
+                <button type="submit" class="btn ajout-cible-btn good-btn" onsubmit="return false">Envoyer</button>
+                <button type="button" class="btn annul-ajout-cible-btn bad-btn"
+                    onclick="window.location.href = 'profil.html';">Annuler
+                </button>
+            </section>
+
+        </form>
+
+    </main>
+</body>

@@ -1,0 +1,179 @@
+html, body{
+    height: 100%;
+    max-width: 100%;
+}
+
+body{
+    font-family: monospace;
+    background-color: #F4F1EC;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.logo-wrapper img{
+    height: 50px;
+}
+main {
+    margin-top:0;
+}
+
+#menu {
+    position: relative;
+    display: inline-block;
+}
+
+.menu {
+    font-size: 24px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+}
+
+#dropdown-menu li {
+    width: 100%;
+}
+
+#dropdown-menu li a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#dropdown-menu li a:hover {
+    background-color: #555;
+}
+
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+
+    background-color: #F4F1EC;
+    font-weight: 600;
+    font-size: 180%;
+    border: none;
+}
+
+
+.profile-icon-wrapper img{
+    height: 37.88px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.logo-wrapper{
+    margin-top: 2%;
+}
+
+.logo-wrapper h1{
+    font-family: Poppins, sans-serif;
+}
+
+
+.debut{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+.debut h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+
+.spec{
+    padding: 10px;
+    border: 2px solid #111144;
+    border-radius: 15px;
+    margin-right: 10%;
+    margin-left: 10%;
+    
+}
+
+.spec h2{
+    text-align: center;
+}
+
+.spec p{
+    font-size: 15px;
+    color: #111144;
+}
+
+.HOM-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    margin-top: 5%;
+
+}
+
+.HOM-wrapper h2{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.HOM-wrapper article{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 7%;
+}
+
+.HOM-wrapper article img{
+    height: 150px;
+    width:  auto;
+    border: 1px solid #111144;
+    border-radius: 7px;
+}
+
+
+.HOM-wrapper a{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#choixPiste{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer{
+    align-self: self-end;
+    margin-right: 10px;
+    margin-bottom: 5%;
+}
+
+footer img{
+    height: 20px;
+    width: auto;
+}

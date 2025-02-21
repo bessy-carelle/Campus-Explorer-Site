@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil utilisateur</title>
+    <link rel="styleSheet" href="../../Style/user.css" media="all">
+    <link rel="styleSheet" href="../../Style/partage.css" media="all">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="../../Script/user/profil.js"defer></script>
+</head>
+<body>
+    <header>
+        <nav class="menu-wrapper">
+            <button class="menu-btn"  onclick="">☰</button>
+            <ul class="menu-list flex-col flex-center"style="display: none;">
+                <li><a href="../../index.html"> Accueil </a></li>
+                <li><a href="./creerGroupe.html"> Groupes </a></li>
+                <li><a href="../welcome/deconnexion.html"> Déconnexion </a></li>
+
+            </ul>
+        </nav>
+
+        <article class="logo-wrapper pop-in-ecrit flex-col flex-center">
+            <img src="../../Images/logo.jpg" alt="Campus Explorer Logo">
+            <h1 class="poppin-police">Campus Explorer</h1>
+        </article>
+        <!-- icon profile de l'utilisateur -->
+        <article class="profile-icon-wrapper">
+            <img src="Images/profile-user.png" alt="" class="petitbohomme">
+        </article>
+        <span class="circle"></span>
+    </header>
+
+    <main class="form-container flex-center flex-col">
+        <article id="infoUser">
+            <div class="flex-row flex-center">Nom : <p id="nomUtilisateur">John Doe</p>
+            </div>
+            <p>Score : <span class="score">0</span></p>
+            <p>Badge : <span class="badge"></span></p>
+
+        </article>
+
+        <h2 class="flex-center">Cibles trouvées</h2>
+
+        <section class="flex-col flex-center photoV">
+            
+        </section>
+
+        <article class="btn-execution flex-center">
+            <button class="neutral-btn btn"  onclick="window.location.href = 'proposer_cible.html';">Proposer Cible</button>
+            <button class="neutral-btn btn"  onclick="window.location.href = '../welcome/jeu.html';"> Accéder au jeu</button>
+        </article>
+        
+    </main>
+</body>
+</html>

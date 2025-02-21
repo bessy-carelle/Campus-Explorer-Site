@@ -1,0 +1,231 @@
+/* --------------------- ARRIERE PLAN --------------------- */
+
+html,
+body {
+    min-height: 100%;
+    max-width: 100%;
+}
+
+body {
+    font-family: monospace;
+    background-color: #F4F1EC;
+}
+
+
+/* --------------------- EN TETE --------------------- */
+
+header {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.menu-wrapper{
+    /* background-color: white; */
+    border-radius: 10px;
+    padding: 1rem 1rem 0rem 1rem;
+}
+
+.menu-btn {
+    color: #111144;
+    font-size: 180%;
+    border: none;
+    padding: 0;
+    background-color: #F4F1EC;
+}
+
+.menu-btn:hover {
+    cursor: pointer;
+}
+
+.open {
+    transform: rotate(90deg);
+    background-color: white;
+}
+
+
+.menu-list {
+    padding: 0rem 2rem 2rem 2rem;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.menu-list li {
+    font-size: 16px;
+    background-color: white;
+    padding: 7px 0;
+    list-style: none;
+}
+
+.menu-list li a{
+    color: #111144;
+    text-decoration: none;
+}
+
+.menu-list li a:hover{
+    text-decoration: underline;
+}
+
+.profile-icon-wrapper img {
+    height: 37.88px;
+    width: auto;
+    /* margin-right: 10px; */
+    padding: 16px;
+}
+
+.profile-icon-wrapper img:hover{
+    cursor: pointer;
+}
+
+.logo-wrapper {
+    /* margin-top: 2%; */
+    padding: 16px;
+    margin: 10px 10px 0 0;
+}
+
+
+
+/* --------------------- ALIGNEMENT FLEX --------------------- */
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* --------------------- POLICE POPPINS --------------------- */
+.poppin-police,
+.btn,
+.input::placeholder {
+     /* h1, p, et les placeholders des champs input*/
+    font-family: Poppins, sans-serif; 
+}
+
+
+
+/* --------------------- TAILLE POLICE --------------------- */
+h1 {
+    font-size: 25px;
+}
+
+.label /* libelle */ {
+    font-size: 18px;
+} 
+
+.texte /* texte */ {
+    font-size: 16px;
+}
+
+
+
+/* --------------------- BUTTONS GENERALES --------------------- */
+.btn {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 30px;
+    border-radius: 8px;
+    border: 2px solid #111144;
+    transition: color 0.4s ease, backgroudn-color 0.4s ease;
+}
+
+.btn:hover {
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+.good-btn {
+    background-color: #F98513;
+    color: #111144;
+}
+
+
+.good-btn:hover {
+    color: #F4F1EC;
+    transition: color 0.3s ease;
+}
+
+.neutral-btn {
+    background-color: #F4F1EC;
+    color: #111144;
+}
+
+.neutral-btn:hover {
+    background-color: #DAD1C8;
+}
+
+.bad-btn {
+    background-color: #111144;
+    color: #F4F1EC;
+}
+
+.bad-btn:hover {
+    background-color: #403771;
+}
+
+
+
+/* --------------------- CIBLEs, IMAGES --------------------- */
+.cible {
+    margin: 10px;
+    border-radius: 15px;
+    border: 3px solid #111144;
+    width: auto;
+}
+
+.gros-cible {
+    height: 370px;
+}
+
+.petite-cible {
+    height: 170px;
+}
+
+.img-action /* petite img sous forme de symbole */{
+    height: 20px;
+    width: auto;
+}
+
+
+/* --------------------- CHAMPS --------------------- */
+.input{
+    background-color: white;
+    width: 200px;
+    border: 2px solid #111144;
+    border-radius: 5px;
+    padding: 5px;
+    color: #f98613b8;
+    font-family: monospace, sans-serif;
+    font-size: 15px;
+}
+
+.input::placeholder{
+    text-align: center;
+    font-weight: 600;
+}
+
+.input-reg /* input */ {
+    height: 25px;
+}
+
+.input-large /* textarea */{
+    height: 50px;
+    border: 2px solid #111144;
+}
+
+.input-large::placeholder{
+    font-family: Poppins, sans-serif;
+}
+
+

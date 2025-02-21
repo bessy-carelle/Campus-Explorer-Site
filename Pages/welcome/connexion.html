@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--nouvelle version-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="../../Style/connexion.css">
+    <link rel="stylesheet" href="../../Style/partage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../../Script/welcome/connexion.js" defer></script>
+</head>
+<body>
+    <header>
+        <!-- Menu de navigation -->
+        <nav class="menu-wrapper">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="menu-list flex-col flex-centre" style="display: none;">
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo du site -->
+        <div class="logo-wrapper">
+            <img src="../../Images/logo.jpg" alt="Logo de Campus Explorer">
+            <h1>Campus Explorer</h1>
+        </div>
+
+        <!-- Icône de profil utilisateur -->
+        <div class="profile-icon-wrapper">
+            <img src="../../Images/profile-user.png" alt="Icône profil utilisateur">
+        </div>
+    </header>
+
+    <main>
+        <section id="con-sect">
+            <form id="form-con" action="https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/connexion.php" method="post" class="flex-center flex-col">
+                <div class="pseudo-wrapper flex-col flex-center">
+                    <label for="name">Pseudo :</label>
+                    <input type="text" id="name" name="name" class="input input-reg" placeholder="Entrez votre pseudo" required>
+                </div>
+
+                <div class="mdp-wrapper flex-col flex-center">
+                    <label for="pass">Mot de passe :</label>
+                    <input type="password" id="pass" name="pass" class="input input-reg" placeholder="Entrez votre mot de passe" required>
+                </div>
+
+                <button class="btn good-btn btn-connexion" type="submit">Se connecter</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div id="button_inscription">
+            <p><a href="inscription.html">Créer un compte</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../Style/partage.css">
+    <link rel="stylesheet" href="../../Style/inscription.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="../../Script/welcome/inscription.js" defer></script>
+</head>
+<body>
+    <header>
+        <!-- Liste déroulante du menu -->
+        <nav class="menu-wrapper">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="menu-list flex-col flex-centre" style="display: none;">
+                <li><a href="../../index.html">Accueil</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo de l'université -->
+        <article class="logo-wrapper">
+            <img src="../../Images/logo.jpg" alt="Logo">
+            <h1>Campus Explorer</h1>
+        </article>
+	
+	<!-- icon profile de l'utilisateur -->
+        <article class="profile-icon-wrapper ">
+            <img src="../../Images/profile-user.png" alt="" class ="petitbohomme" style="display : none;">
+        </article>
+    
+    </header>
+    
+    <section id="Inscr-sect" class="flex-center flex-col">
+        <form id="form-inscr" class="flex-center flex-col" action="https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/addUser.php" method="post">
+            <article class="flex-center flex-col">
+                <label class="label" for="email">Email:</label>
+                <input type="email" class="input input-reg" id="email" name="mail" placeholder="Email valide">
+                <span id="emailMessage"></span> <!-- Zone pour afficher la validation -->
+            </article>
+            
+            <article class="flex-center flex-col">
+                <label class="label" for="Username">Pseudo:</label>
+                <input type="text" class="input input-reg" name="pseudo" placeholder="Username">
+            </article>
+
+            <article class="flex-center flex-col">
+                <label class="label" for="Password">Mot de passe:</label>
+                <input type="password" class="input input-reg" name="passWord" placeholder="Mot de passe">
+            </article>
+
+            <button class="btn good-btn" type="submit" name="action" value="clicked">Enregistrer</button>
+        </form>
+
+    </section>
+    <footer>
+        <article id="foot">
+            <p>Avez-vous déjà un compte ?</p>
+            <p>
+                <a href="connexion.html">Connectez-vous</a>
+            </p>
+        </article>
+    </footer>
+</body>
+</html>
