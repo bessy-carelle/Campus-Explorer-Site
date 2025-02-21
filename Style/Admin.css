@@ -3,7 +3,7 @@
 }
 
 /* FOOTER PARTAGES */
-.footer .neutral-btn, .footer .ajout-cible-btn {
+.footer .neutral-btn, .footer .ajout-cible-btn, .env-pdj-btn{
     margin-right: 20px;
 }
 
@@ -61,9 +61,6 @@
 
 .ajout-main h1{
     text-align: center;
-}
-
-.ajout-main form > div{
     flex-wrap: wrap;
     flex: 1;
 }
@@ -122,13 +119,29 @@
 }
 
 .clicked {
-    border: 3px solid #DAD1C8;
     margin: 15px;
-    transition: ease-in-out 3s;
-    background-color: F4F1EC;
+    transition: ease-in 1s;
+    background-color: #9BACD8;
+    border: 3px solid #b8b6b3;
+    border-radius: 10px;
+    color : white;
 }
 
 .photo-dispo{
     background-color: #F98513;
     transition: ease-out background-color;
+    margin : 15px;
+    border-radius: 15px;
+    border: 3px solid #111144;
 }
+
+.photos-dispo-photos-wrapper{
+    flex-wrap: wrap;
+}
+
+.mess-wrapper{
+    padding : 0px 10px;
+    border-radius : 7px;
+    font-weight: 600;
+}
+

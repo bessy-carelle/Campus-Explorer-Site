@@ -56,8 +56,8 @@ function handlePhotosHTML({dispo, nom , data, idCible}){
 }
 
 
-
-let ajoutPdJBtn = document.addEventListener('click', handleAjoutPdJ)
+let ajoutPdJBtn = document.querySelector('.env-pdj-btn');
+ajoutPdJBtn.addEventListener('click', handleAjoutPdJ);
 
 function handleAjoutPdJ(){
     let pdjTags = document.querySelectorAll('.clicked') //Vu que c'est pdjTags est un array il faut utiliser querySelectorAll pour prendre tous les elements
@@ -71,24 +71,27 @@ function handleAjoutPdJ(){
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
             let reqJSON = await req.json();
             if (reqJSON.status == "Error") throw new Error("Error lors de la connexion ")
-            else if (reqJSON.message == "Message d'erreur") throw new Error("Photos non deposes");
-            addMess(reqJSON.message, "#DAD1C8")
+            else if (reqJSON.message == "echec de la modification") throw new Error("Photos non déposes");
+            addMess(reqJSON.message, "#DAD1C8", "#111144")
         } catch (error){
-            addMess(error, "#111144")
+            addMess(error, "#111144b5", "white")
         }
     })
 }
 
-function addMess(mess, colour){
-    let messWrapper = document.querySelector(".photos-dispo-photos-wrapper")
-    let newBlock = `
-        <article class="flex-center" style="background-color : ${colour}">
-            <p>${mess}</p>
-        </article>
-    `
-    messWrapper.insertAdjacentHTML("beforeend", newBlock)
+function addMess(mess, bgColour, fgColour){
+    let messWrapper = document.querySelector(".photos-dispo-wrapper")
+    let mes = messWrapper.querySelector(".mess-wrapper")
+    if (mes) mes.querySelector("p").textContent = mess;
+    else{
+        let newBlock = `
+            <article class="flex-center mess-wrapper" style="background-color : ${bgColour}; color : ${fgColour};">
+                <p>${mess}</p>
+            </article>
+        `
+        messWrapper.insertAdjacentHTML("beforeend", newBlock)
+    }
 }
-
 
 document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
     function checkSession() {
