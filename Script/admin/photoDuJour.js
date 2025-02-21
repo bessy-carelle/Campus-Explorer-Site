@@ -49,9 +49,7 @@ function handlePhotosHTML({dispo, nom , data, idCible}){
 
     let thisPhoto = document.querySelector(`#photo-${idCible}`)
     thisPhoto.addEventListener('click', function (){
-        if (!this.classList.contains("dispo-one")){
-            this.classList.toggle("clicked");
-        }
+        if (!this.classList.contains("photo-dispo")) this.classList.toggle("clicked");
     })
 }
 
@@ -66,7 +64,7 @@ function handleAjoutPdJ(){
             let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php?idCible=${tag.id}`, {
                 method : "POST",
                 headers : {'Content-Type' : 'application/json'},
-                body : {"idCible" : tag.id.substring(6)}
+                body : JSON.stringify({"idCible" : tag.id.substring(6)})
             });
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
             let reqJSON = await req.json();
