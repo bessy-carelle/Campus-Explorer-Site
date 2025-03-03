@@ -58,13 +58,17 @@ let ajoutPdJBtn = document.querySelector('.env-pdj-btn');
 ajoutPdJBtn.addEventListener('click', handleAjoutPdJ);
 
 function handleAjoutPdJ(){
-    let pdjTags = document.querySelectorAll('.clicked') //Vu que c'est pdjTags est un array il faut utiliser querySelectorAll pour prendre tous les elements
+    let pdjTags = document.querySelectorAll('.clicked')
     pdjTags.forEach(async (tag) => {
+
+        let cibleForm = new FormData();
+        cibleForm.append("idCible", tag.id.substring(6))
+
         try{
             let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php`, {
                 method : "POST",
                 headers : {'Content-Type' : 'application/json'},
-                body : JSON.stringify({"idCible" : tag.id.substring(6)})
+                body : cibleForm
             });
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
             let reqJSON = await req.json();

@@ -20,7 +20,6 @@ menuBtn.addEventListener('click', () => {
         menuList.style.display = "none"
         menuWrapper.style.margin = "0"
 
-
         menuBtn.classList.remove("open")
     }
 });
@@ -28,9 +27,7 @@ menuBtn.addEventListener('click', () => {
 let casList = document.querySelectorAll(".cas-consult-wrapper")
 
 casList.forEach((cas) => {
-    cas.addEventListener('click', () => {
-        window.location.href = 'filtrage_depot.html'
-    })
+    cas.addEventListener('click', () => window.location.href = 'filtrage_depot.html')
 
     cas.addEventListener('mouseenter', () => {
         cas.style.backgroundColor = '#9BACD8';
@@ -38,9 +35,7 @@ casList.forEach((cas) => {
         cas.style.padding = "5px";
         cas.style.borderRadius = "15px";
 
-        cas.querySelectorAll("p").forEach((p) => {
-            p.style.color = "#F4F1EC"
-        })
+        cas.querySelectorAll("p").forEach((p) => p.style.color = "#F4F1EC");
     })
 
     cas.addEventListener('mouseleave', () => {
@@ -49,51 +44,52 @@ casList.forEach((cas) => {
         cas.style.padding = "0px";
         cas.style.borderRadius = "0px";
 
-        cas.querySelectorAll("p").forEach((p) => {
-            p.style.color = "black"
-        })
+        cas.querySelectorAll("p").forEach((p) => p.style.color = "black");
     })
 })
 
-let articleWrapper = document.querySelector(".consult-wrapper article")
+let articleWrapper = document.querySelector(".consult-wrapper article");
 
 const xhr = new XMLHttpRequest()
-xhr.open('GET', 'https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/signalerCible.php', true)
+xhr.open('GET', 'https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/traitementPhoto.php', true)
 xhr.onreadystatechange = () => {
     if (xhr.status === 200 && xhr.readyState === 4) {
         let res = JSON.parse(xhr.response)
         if (res.status === "success") {
             console.log(res)
-            res.message.forEach(cas => handleCasCiblesHTML(cas))
+            res.message.forEach(cas => handleCasCiblesHTML(cas));
 
             stockerCibleSelectionne()
-        } else {
-            handleError(res)
-        }
+        } else handleError(res)
     }
 }
 xhr.send()
 
-const handleCasCiblesHTML = ({ cible, src, motif, user, nomCible }) => {
+const handleCasCiblesHTML = ({ cible, photo, motif, user, nomPhoto, idPhoto }) => {
     let casConsult = `
-        <section class="cas-consult-wrapper">
+        <section class="cas-consult-wrapper flex-center flex-col" id="photo-propose-${idPhoto}">
             <article class="flex-row flex-center">
-                <img src="data:image/jpeg;base64,${src}" alt="" srcset="">
+                <img src="${photo}" alt="Photo du Jeu" class="cible petite-cible">
                 <p> -> </p>
-                <img src="data:image/jpeg;base64,${cible}" alt="" srcset="">
+                <img src="${cible}" alt="Cible Depose" class="cible petite-cible">
             </article>
             <article class="flex-start flex-col">
-                <p class="pseudo-consult-wrapper" style="font-weight:600;">Pseudo :
+                <p class="pseudo-consult-wrapper texte" style="font-weight:600;">Pseudo :
                     <span class="pseudo-consult-val" style="font-weight: 100; margin-left: 10px;">${user}</span>
                 </p>
 
-                <p class="cible-consult-wrapper" style="font-weight:600;">Cible :
-                    <span class="cible-consult-val" style="font-weight: 100; margin-left: 10px;">${nomCible}</span>
+                <p class="cible-consult-wrapper texte" style="font-weight:600;">Cible :
+                    <span class="cible-consult-val" style="font-weight: 100; margin-left: 10px;">${nomPhoto}</span>
                 </p>
 
-                <p class="statut-consult-wrapper" style="font-weight:600;">Statut :
+                <p class="statut-consult-wrapper texte" style="font-weight:600;">Statut :
                     <span class="statut-consult-wrapper style="font-weight: 100; margin-left: 10px;">${motif}</span>
                 </p>
+            </article>
+
+            <article class="cas-consult-img-wrapper" style="display:none;">
+                <img class="accept-img img-btn" src="../../Images/verifier.png" alt="Valider Photo Button"/>
+                <img class="decline-img img-btn" src="../../Images/cancel-black.png" alt="Refuser Photo Button"/>
             </article>
         </section>
     `;
@@ -113,19 +109,51 @@ const handleError = ({status, message}) => {
 
 // SELECTIONNE UN DEPOT A FILTRER
 const stockerCibleSelectionne = () => {
-    let allCasConsultWrappers = document.querySelectorAll('.cas-consult-wrapper')
-    allCasConsultWrappers.forEach(async (cas, pos) => {
+    let allCasConsultWrappers = document.querySelectorAll('.cas-consult-wrapper');
+    allCasConsultWrappers.forEach(async (cas) => {
+        let acceptBtn = cas.querySelector(".accept-img");
+        let declineBtn = cas.querySelector(".decline-img");
+        console.log(declineBtn)
+        let imgBtnWrapper = cas.querySelector(".cas-consult-img-wrapper");
 
-        cas.addEventListener('click', () => {
-            localStorage.setItem('cible-selectionne', pos)
-        })
+        cas.addEventListener("mouseenter", () => imgBtnWrapper.style.display = "flex");
+        cas.addEventListener("mouseleave", () => imgBtnWrapper.style.display = "none");
+        declineBtn.addEventListener('mouseenter', (event) => event.target.src = "../../Images/cancel-white.png")
+        declineBtn.addEventListener('mouseleave', (event) => event.target.src = "../../Images/cancel-black.png")
+
+        resForm = new FormData();
+        resForm.append("idPhoto", cas.id.substring(14));
+
+        handleDecisionPhoto(acceptBtn, "addPhotoValide")
+        handleCasCiblesHTML(declineBtn, "removePhotoValide")
+
     })
-
-    console.log(localStorage.getItem('cible-selectionne'))
 }
 
-document.querySelector(".petitbohomme").addEventListener("click", ()=>{
-    
+function handleDecisionPhoto (btn, action){
+    btn.addEventListener('click', () => {
+        try{
+            ( async () => {
+                let addPhReq = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/${action}.php`, {
+                    header : "Content-Type : application/json",
+                    method : "POST",
+                    body : resForm
+                })
+
+                if (!addPhReq.ok) throw new Error("Erreur de connexion au service");
+                let addPhReqJSON = await addPhReq.json();
+                if (addPhReqJSON.status === "error") throw new Error("Validation n'a pas pu aboutir");
+                return addPhReqJSON.status 
+            })();
+        } catch (error){
+        
+        } finally {
+
+        }
+    });
+}
+
+document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
     
     function checkSession() {
         const admin = localStorage.getItem("idadmin");
