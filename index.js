@@ -124,25 +124,51 @@ document.addEventListener("keydown", () => {
     localStorage.setItem('lastActive', new Date().getTime());
 });
 
-// Affichage des photos du mois (stockées en sessionStorage)
-const photo1 = JSON.parse(sessionStorage.getItem('pop-photo-1'));
-const photo2 = JSON.parse(sessionStorage.getItem('pop-photo-2'));
+const xs = new XMLHttpRequest();
+xs.open("GET", "https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getHunt.php?dispo=1");
 
-const photoArticle = document.querySelector('.photo');
+xs.onreadystatechange = () => {
+    if (xs.readyState === 4 && xs.status === 200) {
+        try {
+            const rep = JSON.parse(xs.responseText);
+            console.log(rep);
 
-if (photo1 && photo2) {
-    // Création de la première image
-    const imageElement1 = document.createElement('img');
-    imageElement1.src = photo1;
-    imageElement1.alt = "Photo du mois 1";
+            if (rep && Array.isArray(rep.message)) {
+                let photos = rep.message;
+                const photoaffiche = document.querySelector(".imagedumois");
 
-    // Création de la deuxième image
-    const imageElement2 = document.createElement('img');
-    imageElement2.src = photo2;
-    imageElement2.alt = "Photo du mois 2";
+                if (!photoaffiche) {
+                    console.error("Le conteneur .imagedumois n'existe pas.");
+                    return;
+                }
 
-    photoArticle.appendChild(imageElement1);
-    photoArticle.appendChild(imageElement2);
-} else {
-    console.log("Les photos n'ont pas été trouvées dans sessionStorage.");
-}
+                // Mélange aléatoire des images
+                photos = photos.sort(() => 0.5 - Math.random());
+
+                // Sélection de 2 images (ou moins si moins de 2 disponibles)
+                const selectedPhotos = photos.slice(0, 2);
+
+                selectedPhotos.forEach(photo => {
+                    const col = document.createElement("div");
+                    col.classList.add("col-md-6", "col-sm-12", "d-flex", "justify-content-center", "mb-3");
+
+                    const img = document.createElement("img");
+                    img.src = photo.data;
+                    img.id = photo.idCible;
+                    img.alt = photo.nom;
+                    img.classList.add("img-fluid", "rounded", "shadow", "image-hover");
+                    img.style.cursor = "pointer";
+
+                    col.appendChild(img);
+                    photoaffiche.appendChild(col);
+                });
+            } else {
+                console.log("Le champ 'message' n'est pas un tableau !");
+            }
+        } catch (error) {
+            console.error("Erreur lors du parsing JSON :", error);
+        }
+    }
+};
+
+xs.send();
