@@ -30,9 +30,7 @@ menuBtn.addEventListener('click', () => {
         const reqJSON = await req.json();
         console.log(reqJSON);
         reqJSON.message.forEach(photo => handlePhotosHTML(photo));
-    } catch (error) {
-        console.error(error)
-    }
+    } catch (error) { console.error(error) }
 })();
 
 function handlePhotosHTML({dispo, nom , data, idCible}){

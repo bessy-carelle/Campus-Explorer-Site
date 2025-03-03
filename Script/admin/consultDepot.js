@@ -65,13 +65,13 @@ xhr.onreadystatechange = () => {
 }
 xhr.send()
 
-const handleCasCiblesHTML = ({ cible, photo, motif, user, nomPhoto, idPhoto }) => {
+const handleCasCiblesHTML = ({ cible, photo, user, nomPhoto, idPhoto }) => {
     let casConsult = `
         <section class="cas-consult-wrapper flex-center flex-col" id="photo-propose-${idPhoto}">
             <article class="flex-row flex-center">
-                <img src="${photo}" alt="Photo du Jeu" class="cible petite-cible">
+                <img src="${photo}" alt="Photo du Jeu" class="cible petite-cible"/>
                 <p> -> </p>
-                <img src="${cible}" alt="Cible Depose" class="cible petite-cible">
+                <img src="${cible}" alt="Cible Depose" class="cible petite-cible"/>
             </article>
             <article class="flex-start flex-col">
                 <p class="pseudo-consult-wrapper texte" style="font-weight:600;">Pseudo :
@@ -82,9 +82,6 @@ const handleCasCiblesHTML = ({ cible, photo, motif, user, nomPhoto, idPhoto }) =
                     <span class="cible-consult-val" style="font-weight: 100; margin-left: 10px;">${nomPhoto}</span>
                 </p>
 
-                <p class="statut-consult-wrapper texte" style="font-weight:600;">Statut :
-                    <span class="statut-consult-wrapper style="font-weight: 100; margin-left: 10px;">${motif}</span>
-                </p>
             </article>
 
             <article class="cas-consult-img-wrapper" style="display:none;">
@@ -113,11 +110,16 @@ const stockerCibleSelectionne = () => {
     allCasConsultWrappers.forEach(async (cas) => {
         let acceptBtn = cas.querySelector(".accept-img");
         let declineBtn = cas.querySelector(".decline-img");
-        console.log(declineBtn)
         let imgBtnWrapper = cas.querySelector(".cas-consult-img-wrapper");
 
         cas.addEventListener("mouseenter", () => imgBtnWrapper.style.display = "flex");
-        cas.addEventListener("mouseleave", () => imgBtnWrapper.style.display = "none");
+        cas.addEventListener("mouseleave", () => {
+            imgBtnWrapper.style.display = "none";
+            let messTag = cas.querySelector(".mess");
+            if (messTag) messTag.style.display = "none"
+            window.location.href = "consultation_depot.html"
+        });
+
         declineBtn.addEventListener('mouseenter', (event) => event.target.src = "../../Images/cancel-white.png")
         declineBtn.addEventListener('mouseleave', (event) => event.target.src = "../../Images/cancel-black.png")
 
@@ -125,32 +127,39 @@ const stockerCibleSelectionne = () => {
         resForm.append("idPhoto", cas.id.substring(14));
 
         handleDecisionPhoto(acceptBtn, "addPhotoValide")
-        handleCasCiblesHTML(declineBtn, "removePhotoValide")
+        handleDecisionPhoto(declineBtn, "removePhotoValide")
 
-    })
-}
-
-function handleDecisionPhoto (btn, action){
-    btn.addEventListener('click', () => {
-        try{
-            ( async () => {
-                let addPhReq = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/${action}.php`, {
-                    header : "Content-Type : application/json",
-                    method : "POST",
-                    body : resForm
-                })
-
-                if (!addPhReq.ok) throw new Error("Erreur de connexion au service");
-                let addPhReqJSON = await addPhReq.json();
-                if (addPhReqJSON.status === "error") throw new Error("Validation n'a pas pu aboutir");
-                return addPhReqJSON.status 
-            })();
-        } catch (error){
-        
-        } finally {
-
+        function showMessage(bc, mess){
+            let messTag = cas.querySelector(".mess")
+            if(!messTag){
+                let newBlock = `
+                    <p class="texte poppin-police mess" style="color: #F4F1EC; background-color: ${bc}; padding: 10px 30px; border-radius: 7px; font-weight:600;"> 
+                        ${mess} 
+                    </p>
+                `
+                cas.insertAdjacentHTML("beforeend", newBlock)
+            }else messTag.textContent = mess
         }
-    });
+    
+        function handleDecisionPhoto (btn, action){
+            btn.addEventListener('click', () => {
+                try{
+                    ( async () => {
+                        let addPhReq = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/${action}.php`, {
+                            header : "Content-Type : application/json",
+                            method : "POST",
+                            body : resForm
+                        })
+    
+                        if (!addPhReq.ok) throw new Error("Erreur de connexion au service");
+                        let addPhReqJSON = await addPhReq.json();
+                        if (addPhReqJSON.status === "error") throw new Error("Validation n'a pas pu aboutir");
+                        showMessage("#ff9358", addPhReqJSON.status)
+                    })();
+                } catch (error){ showMessage("#443b75", error) }
+            });
+        }
+    })
 }
 
 document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
