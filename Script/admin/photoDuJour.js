@@ -61,15 +61,15 @@ function handleAjoutPdJ(){
     let pdjTags = document.querySelectorAll('.clicked') //Vu que c'est pdjTags est un array il faut utiliser querySelectorAll pour prendre tous les elements
     pdjTags.forEach(async (tag) => {
         try{
-            let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php?idCible=${tag.id}`, {
+            let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php`, {
                 method : "POST",
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify({"idCible" : tag.id.substring(6)})
             });
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
             let reqJSON = await req.json();
-            if (reqJSON.status == "Error") throw new Error("Error lors de la connexion ")
-            else if (reqJSON.message == "echec de la modification") throw new Error("Photos non déposes");
+            if (reqJSON.status == "error") throw new Error("Error lors de la connexion ")
+            else if (reqJSON.message == "echec de la modification") throw new Error("Erreur de modification");
             addMess(reqJSON.message, "#DAD1C8", "#111144")
         } catch (error){
             addMess(error, "#111144b5", "white")
