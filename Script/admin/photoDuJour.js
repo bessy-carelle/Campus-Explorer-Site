@@ -73,6 +73,8 @@ function handleAjoutPdJ(){
             addMess(reqJSON.message, "#DAD1C8", "#111144")
         } catch (error){
             addMess(error, "#111144b5", "white")
+        } finally{
+            tag.classList.toggle('clicked')
         }
     })
 }
