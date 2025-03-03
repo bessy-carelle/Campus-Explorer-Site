@@ -13,10 +13,9 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 try {
     // Connexion à la base de données avec PDO
     $con = connectionPDO(); // Assurez-vous que la fonction connectionPDO() retourne une instance PDO
-    $stmt = $con->prepare("SELECT pseudo as user, idUser, nomPhoto, idPhoto, Photos.data as photo , idCible,Cibles.data as cible from Photos
-            inner join Cibles using (idCible)
-            inner join Utilisateurs using (idUser)
-            group by idCible ");
+    $stmt = $con->prepare("SELECT pseudo as user, idUser,idCibleP, nomCible, url,indice,dispo from CiblePropose
+            inner join Utilisateurs using (idUser)"
+        );
 
     // Exécution de la requête
     if ($stmt->execute()) {

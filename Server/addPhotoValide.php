@@ -9,31 +9,19 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 try {
     $con = connectionPDO();
-    $photo = validateInput($_POST['photo']);
-    $user = validateInput($_POST['user']); //id de l'utilisateur
-    $cible = validateInput($_POST['cible']);//id de la cible de la photo
-    $url = validateInput($_POST['url']);
-    
-    if (empty($cible)|| empty($user)){
-        echo json_encode(["status" => "error", "message" => "Donnez l'ID de la cible de la photo ou id du joueur"]);
-        exit;
-    }
-    if(empty($photo)){
-        echo json_encode(["status" => "error", "message" => "Donnez l'id de la photo"]);
-        exit;
-    }
-    if(empty($url)){
-        echo json_encode(["status" => "error", "message" => "Donnez l'url de la photo"]);
+    $photo = $_POST['idPhoto'];
+    if (empty($photo)){
+        echo json_encode(["status" => "error", "message" => "il manque l'id de la photo"]);
         exit;
     }
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $stmt = $con->prepare("INSERT INTO Photos (idPhoto,idUser,data, idCible) VALUES (:photo,:user,:data, :cible)");
-        $stmt->bindParam(':user',$user);
-        $stmt->bindParam(':photo', $photo);
-        $stmt->bindParam(':data', $url);
-        $stmt->bindParam(':cible', $cible);
-
+        $stmt = $con->prepare("INSERT INTO PhotoValides (idUser, idPhoto, idCible, nomPhoto, data)
+            SELECT idUser, idPhoto, idCible, nomPhoto, data
+            FROM Photos
+            WHERE idPhoto = :idPhoto;"
+        );
+        $stmt->bindParam(':idPhoto', $photo);
         if ($stmt->execute()) {
             echo json_encode(["status" => "OK", "message" => "Données insérées avec succès"]);
         } else {
