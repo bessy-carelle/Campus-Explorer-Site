@@ -65,7 +65,7 @@ function handleAjoutPdJ(){
         try{
             let req = await fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/setDispo.php`, {
                 method : "POST",
-                headers : {'Content-Type' : 'application/json'},
+                header : {'Content-Type' : 'application/json'},
                 body : cibleForm
             });
             if (!req.ok) throw new Error ("Erreur lors de l'envoi de la requete")
