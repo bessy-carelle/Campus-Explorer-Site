@@ -22,6 +22,8 @@ menuBtn.addEventListener('click', () => {
         menuBtn.classList.remove("open")
     }
 });
+
+
 // Recuperation de l'ID de l'utilisateur
 const userID = localStorage.getItem ('iduser');
 if (!userID) {
@@ -52,7 +54,7 @@ function calculerScore(photos) {
     console.log(`Score de l'utilisateur : ${score}`);
 }
 // appel de la fonction
-calculerScore(data.message);
+// calculerScore(data.message);
 
 // Ajout des niveaux après le calcul du score
 function ajouterNiveau() {
@@ -87,6 +89,12 @@ fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getPhotoV.ph
             if (data.status === "success") {
                 const ciblesContainer = document.querySelector('.form-container');
 
+                if (data.message && Array.isArray(data.message)) {
+                    calculerScore(data.message); // ✅ Appel après récupération des données
+                } else {
+                    console.error("Les données récupérées ne sont pas valides :", data.message);
+                }
+
                 // Parcourir chaque photo récupérée
                 data.message.forEach(photo=> {
                     const { idPhoto, idCible, nomPhoto, idUser, datePublication,data: imageData} = photo;
@@ -118,20 +126,3 @@ fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getPhotoV.ph
 } else {
     console.log("Utilisateur non connecté, impossible de récupérer les cibles.");
 };
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-

@@ -68,26 +68,30 @@ document.addEventListener("DOMContentLoaded", () => {
     xs.send();
 });
 
-
-document.querySelector(".profile-icon-wrapper").addEventListener("click", () => {
-    function checkSession() {
-        const user = localStorage.getItem("iduser");
-        const admin = localStorage.getItem("idadmin");
-        const lastActive = localStorage.getItem("lastActive");
-        const sessionTimeout = 30 * 60 * 1000; 
-        
-        if (!user && !admin) {
-            alert("Vous devez etre connecter pour acceder a cette page.");
-            window.location.href = "../../Pages/welcome/connexion.html";
-        } else if (lastActive && new Date().getTime() - lastActive > sessionTimeout) {
-            alert("Votre session a expir�, veuillez vous reconnecter.");
-            window.location.href = "../../Pages/welcome/connexion.html";
-        } else if (admin) {
-            window.location.href = "../../Pages/admin/profil.html";
-        } else {
-            localStorage.setItem("lastActive", new Date().getTime());
+const bonhomme= document.querySelector(".profile-icon-wrapper");
+ if(bonhomme){
+    bonhomme.addEventListener("click", () => {
+        function checkSession() {
+            const user = localStorage.getItem("iduser");
+            const admin = localStorage.getItem("idadmin");
+            const lastActive = localStorage.getItem("lastActive");
+            const sessionTimeout = 30 * 60 * 1000; 
+            
+            if (!user && !admin) {
+                alert("Vous devez etre connecter pour acceder a cette page.");
+                window.location.href = "../../Pages/welcome/connexion.html";
+            } else if (lastActive && new Date().getTime() - lastActive > sessionTimeout) {
+                alert("Votre session a expir�, veuillez vous reconnecter.");
+                window.location.href = "../../Pages/welcome/connexion.html";
+            } else if (user) {
+                window.location.href = "../../Pages/user/profil.html";
+            } else if (admin) {
+                window.location.href= "../../Pages/admin/profil.html"
+            } else {
+                localStorage.setItem("lastActive", new Date().getTime());
+            }
         }
-    }
-    
-    checkSession();
-});
+        
+        checkSession();
+    });
+ }
