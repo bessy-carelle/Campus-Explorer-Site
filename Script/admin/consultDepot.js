@@ -59,7 +59,7 @@ xhr.onreadystatechange = () => {
             console.log(res)
             res.message.forEach(cas => handleCasCiblesHTML(cas));
 
-            stockerCibleSelectionne()
+            stockerCibleSelectionne();
         } else handleError(res)
     }
 }
@@ -113,12 +113,7 @@ const stockerCibleSelectionne = () => {
         let imgBtnWrapper = cas.querySelector(".cas-consult-img-wrapper");
 
         cas.addEventListener("mouseenter", () => imgBtnWrapper.style.display = "flex");
-        cas.addEventListener("mouseleave", () => {
-            imgBtnWrapper.style.display = "none";
-            let messTag = cas.querySelector(".mess");
-            if (messTag) messTag.style.display = "none"
-            window.location.href = "consultation_depot.html"
-        });
+        cas.addEventListener("mouseleave", () => imgBtnWrapper.style.display = "none");
 
         declineBtn.addEventListener('mouseenter', (event) => event.target.src = "../../Images/cancel-white.png")
         declineBtn.addEventListener('mouseleave', (event) => event.target.src = "../../Images/cancel-black.png")
@@ -157,12 +152,18 @@ const stockerCibleSelectionne = () => {
                         showMessage("#ff9358", addPhReqJSON.status)
                     })();
                 } catch (error){ showMessage("#443b75", error) }
+
+                cas.addEventListener('mouseleave', () => {
+                    let messTag = cas.querySelector(".mess");
+                    if (messTag) messTag.style.display = "none"
+                    window.location.href = "consultation_depot.html"
+                })
             });
         }
     })
 }
 
-document.querySelector(".profile-icon-wrapper").addEventListener("click", ()=>{
+document.querySelector(".profile-icon-wrapper").addEventListener("click", () => {
     
     function checkSession() {
         const admin = localStorage.getItem("idadmin");
