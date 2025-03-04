@@ -22,20 +22,21 @@ try {
 
     // Préparation de la requête SQL
     if (!empty($idPhoto)) {
-        $stmt = $con->prepare("SELECT idPhoto,idUser,data, idCible FROM PhotoValides WHERE idPhoto = :idPhoto");
+        $stmt = $con->prepare("SELECT idPhoto,nomPhoto,idUser,data, idCible FROM PhotoValides WHERE idPhoto = :idPhoto");
         $stmt->bindParam(':idPhoto', $idPhoto, PDO::PARAM_INT);
     } else if(!empty($idUser)){
-        $stmt = $con->prepare("SELECT idPhoto,idUser,data, idCible FROM PhotoValides WHERE idUser = :idUser");
+        $stmt = $con->prepare("SELECT idPhoto,nomPhoto,idUser,data, idCible FROM PhotoValides WHERE idUser = :idUser");
         $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
     }else {
-        $stmt = $con->prepare("SELECT idPhoto,idUser,data, idCible FROM PhotoValides");
+        $stmt = $con->prepare("SELECT idPhoto,nomPhoto,idUser,data, idCible FROM PhotoValides");
     }
 
     // Exécution de la requête
     if ($stmt->execute()) {
         $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
-        echo json_encode(["status" => "success", "message" => $photos ,"session" =>$_SESSION['user']]);
+        echo json_encode(["status" => "success", "message" => $photos
+    ]);
     } else {
         echo json_encode(["status" => "error", "message" => "Erreur : ".$stmt->errorInfo()]);
     }
