@@ -1,5 +1,4 @@
 <?php
-session_start();
 require("connection.php");
 header("Content-Type: application/json; charset=UTF-8");
 // Autoriser l'accès depuis n'importe quelle origine (à adapter selon vos besoins)

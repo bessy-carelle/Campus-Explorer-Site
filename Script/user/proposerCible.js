@@ -148,7 +148,7 @@ submitBtn.addEventListener('click', (event) => {
         if (data.status === 'success') {
             alert(data.message);
             setTimeout(() => {
-                window.location.href = "../user/profil.html"; // Redirection après 3 seconde
+                window.location.href = "../user/profil.html"; // Redirection après 3 secondes
             }, 3000);
         } else {
             alert(data.message);
