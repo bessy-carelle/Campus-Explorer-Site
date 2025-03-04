@@ -12,34 +12,64 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 try {
-    $con = connectionPDO(); // Assurez-vous que cette fonction retourne une instance PDO
+    $con = connectionPDO(); // 
     
     // Récupération et validation des données d'entrée
     $name = validateInput($_POST['pseudo']);
-    $mail = validateInput($_POST['mail']);
     $pass = validateInput($_POST['passWord']);
+    $mail = filter_var($_POST["mail"], FILTER_SANITIZE_EMAIL);
 
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die(json_encode(["status" => "error", "message" => "Adresse e-mail invalide."]));
+    }
     // Vérification que les champs obligatoires sont remplis
-    if (empty($name) || empty($mail) || empty($pass)) {
-        echo json_encode(["status" => "error", "message" => "Veuillez remplir tous les champs."]);
+    if (empty($name) || empty($pass)) {
+        echo json_encode(["status" => "error", "message" => "il manque le nom ou le mot de passe."]);
         exit;
     }
+
+    // Générer un token unique (alternative à random_bytes())
+    $token = md5(uniqid(rand(), true));
+    $verificationLink = "https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/verify.php?email=$mail&token=$token";
 
     // Préparation et exécution de la requête d'insertion
     //IMportant : Hachez le mot de passe
     //$crypte = password_hash($pass, PASSWORD_DEFAULT);
-    $stmt = $con->prepare("INSERT INTO Utilisateurs (pseudo, mail, passWord) VALUES (:name, :mail, :pass)");
+    $stmt = $con->prepare("INSERT INTO Utilisateurs (pseudo, mail, passWord,token,verified) VALUES (:name, :mail, :pass,:token,:verif)");
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':mail', $mail);
     $stmt->bindParam(':pass', $pass);
+    $stmt->bindParam(':token', $token);
+    $stmt->bindParam(':verif', 0);
+    
+    // Contenu de l'e-mail
+    $subject = "Vérification de votre e-mail";
+    $message = "
+    <html>
+        <body>
+            <h2>Vérifiez votre e-mail</h2>
+            <p>Cliquez sur le lien ci-dessous pour confirmer votre adresse e-mail :</p>
+            <a href='$verificationLink'>Confirmer mon e-mail</a>
+            <p>Ce lien expirera dans 24 heures.</p>
+        </body>
+    </html>";
 
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: noreply@ton-site.com" . "\r\n";
+
+    // Lancement de la requête
     if ($stmt->execute()) {
+        // Envoi de l'e-mail
+        if (mail($mail, $subject, $message, $headers)) {
+            echo json_encode(["status" => "success", "message" => "OK"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Erreur lors de l'envoi de l'e-mail."]);
+        }
         header("Location: https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Campus-Explorer/Pages/welcome/connexion.html");
-        echo json_encode(["status" => "success", "message" => "Utilisateur ajouté avec succès."]);
     } else {
         echo json_encode(["status" => "error", "message" => "Erreur : ".$stmt->errorInfo()]);
     }
-
 } catch (PDOException $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
 }

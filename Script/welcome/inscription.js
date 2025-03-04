@@ -1,4 +1,4 @@
-// Gestion du menu d�roulant
+// Gestion du menu d�roulant
 let menuWrapper = document.querySelector(".menu-wrapper");
 let menuList = document.querySelector(".menu-list");
 let menuBtn = document.querySelector(".menu-btn");
@@ -69,7 +69,7 @@ if (form) {
             })
             .then((data) => {
                 console.log(data);
-                if (data.message === "Utilisateur ajouté avec succès.") {
+                if (data.message === "OK") {
                     alert(data.message);
                     window.location.href = "../Pages/user/profil.html";
                 } else {
