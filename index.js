@@ -1,21 +1,33 @@
+window.addEventListener("load", function () {
+    const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+    const firstVisit = !sessionStorage.getItem("tabOpened"); // Vérifie si un onglet est déjà ouvert
 
-document.addEventListener("DOMContentLoaded", function () {
+    if (firstVisit) {
+        console.log("Nouvel onglet ouvert ! LocalStorage vidé.");
+        sessionStorage.setItem("tabOpened", "true"); // Marque cet onglet comme ouvert
+
+        // Vider complètement le localStorage
+        localStorage.clear();
+    } else if (isReload) {
+        console.log("La page a été rechargée !");
+    }
+
+    // 🔹 Code que tu voulais modifier
     const user = localStorage.getItem("iduser");
     const admin = localStorage.getItem("idadmin");
+    const pseudo = localStorage.getItem("pseudo");
 
-       localStorage.clear();
+    if (isReload) {
+        console.log("Code exécuté lors d'un rechargement.");
 
-    // Restaurer les identifiants utilisateur et admin
-    if (user) localStorage.setItem("iduser", user);
-    if (admin) localStorage.setItem("idadmin", admin);
+        localStorage.clear();
 
-});
+        if (user) localStorage.setItem("iduser", user);
+        if (admin) localStorage.setItem("idadmin", admin);
+        if (pseudo) localStorage.setItem("pseudo", pseudo);
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const user = localStorage.getItem("iduser");
-    const admin = localStorage.getItem("idadmin");
-
-    // Cacher les boutons "Connexion" et "Inscription" si l'utilisateur est connect�
+    // 🔹 Masquer les boutons "Connexion" et "Inscription" si connecté
     if (user || admin) {
         let connexionBtn = document.querySelector("nav .menu-list li:nth-child(1)");
         let inscriptionBtn = document.querySelector("nav .menu-list li:nth-child(2)");
@@ -26,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-window.addEventListener("beforeunload", function () {
-    localStorage.clear(); // Vide tout le localStorage � la fermeture de l'onglet
-});
+
 // Gestion du bouton "Choisissez votre piste!"
 const choixPisteBtn = document.getElementById('choixPiste');
 if (choixPisteBtn) {
@@ -38,7 +48,6 @@ if (choixPisteBtn) {
         const admin = localStorage.getItem("idadmin");
 
         if (!user && !admin) {
-            alert("Vous devez être connecté pour accéder à cette page.");
             window.location.href = "Pages/welcome/connexion.html"; // Redirige vers connexion
         } else if(user) {
             window.location.href = "Pages/welcome/jeu.html"; // Redirige vers le profil utilisateur
