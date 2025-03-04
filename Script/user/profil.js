@@ -42,34 +42,29 @@ if (userID){
             const scoreElt = document.querySelector(".score");
             data.message.forEach (({score}) =>{
                 scoreElt.textContent = score;
-            })
+            });
+            // Ajout des niveaux après le calcul du score
+            (()  => {
+                const badgeElt = document.querySelector(".niveau");
+                if (!scoreElt) {
+                    console.error("Pas de score pour toi pour l'instant!");
+                    return;
+                }
+                const score = parseInt(scoreElt.textContent) || 0; // Récupérer le score affiché
+
+                let niveau = "Débutant";
+                if (score >= 20) niveau = "Légende ";
+                else if (score >= 15) niveau = "Maître";
+                else if (score >= 8) niveau = "Expert ";
+                else if (score >= 3) niveau = "Apprenti";
+
+                // Ajout du niveau à côté du score
+                badgeElt.textContent = niveau;
+            })();
+
         }
     })
 }
-
-// Ajout des niveaux après le calcul du score
-function ajouterNiveau() {
-
-    const badgeElt = document.querySelector(".niveau");
-    if (!scoreElt) {
-        console.error("Pas de score pour toi pour l'instant!");
-        return;
-    }
-    const score = parseInt(scoreElt.textContent) || 0; // Récupérer le score affiché
-
-    let niveau = "Débutant";
-    if (score >= 20) niveau = "Légende ";
-    else if (score >= 15) niveau = "Maître";
-    else if (score >= 8) niveau = "Expert ";
-    else if (score >= 3) niveau = "Apprenti";
-
-    // Ajout du niveau à côté du score
-    badgeElt.textContent = niveau;
-}
-// Exécuter la fonction
-ajouterNiveau();
-
-
 // Récuperation cible déjà effectué
 if (userID){
     fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getPhotoV.php?idUser=${userID}`)
