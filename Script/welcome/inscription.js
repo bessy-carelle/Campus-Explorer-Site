@@ -26,27 +26,27 @@ if (menuBtn) {
 
 
 // Vérification de l'email en temps réel
-document.addEventListener("DOMContentLoaded", function () {
-    let emailInput = document.getElementById("email");
-    let emailLabel = document.getElementById("emailLabel");
+// document.addEventListener("DOMContentLoaded", function () {
+//     let emailInput = document.getElementById("email");
+//     let emailLabel = document.getElementById("emailLabel");
 
-    if (emailInput && emailLabel) {
-        emailInput.addEventListener("input", function () {
-            let email = emailInput.value.trim();
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (emailInput && emailLabel) {
+//         emailInput.addEventListener("input", function () {
+//             let email = emailInput.value.trim();
+//             let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (emailRegex.test(email)) {
-                emailLabel.textContent = "✅ Email valide";
-                emailLabel.style.color = "green";
-            } else {
-                emailLabel.textContent = "❌ Email invalide";
-                emailLabel.style.color = "red";
-            }
-        });
-    } else {
-        console.error("L'input email ou son label est introuvable dans le DOM.");
-    }
-});
+//             if (emailRegex.test(email)) {
+//                 emailLabel.textContent = "✅ Email valide";
+//                 emailLabel.style.color = "green";
+//             } else {
+//                 emailLabel.textContent = "❌ Email invalide";
+//                 emailLabel.style.color = "red";
+//             }
+//         });
+//     } else {
+//         console.error("L'input email ou son label est introuvable dans le DOM.");
+//     }
+// });
 
 // Gestion du formulaire d'inscription
 const form = document.getElementById("form-inscr");
@@ -56,10 +56,11 @@ if (form) {
         event.preventDefault();
 
         const formData = new FormData(form);
+        console.log(form.action);
 
-        fetch(form.action, {
-            method: form.method,
-            body: formData,
+        fetch("https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/addUser.php", {
+            method: "POST",
+            body: formData
         })
             .then((response) => {
                 if (!response.ok) {
@@ -70,14 +71,14 @@ if (form) {
             .then((data) => {
                 console.log(data);
                 if (data.message === "OK") {
-                    alert(data.message);
-                    window.location.href = "../Pages/user/profil.html";
+                    alert("Compte crée avec succès");
+                    window.location.href = "../welcome/connexion.html";
                 } else {
                     alert(data.message || "Erreur lors de l'inscription.");
                 }
             })
             .catch((error) => {
-                console.error("Erreur:", error);
+                console.log("Erreur:", error);
                 alert("Une erreur est survenue. Veuillez réessayer.");
             });
     });
