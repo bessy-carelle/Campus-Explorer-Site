@@ -21,7 +21,8 @@ try {
         if ($stmt->execute()) {
             echo json_encode(["status" => "OK", "message" => "Données supprimées avec succès"]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $stmt->errorInfo()]);
+            $rep = $stmt -> errorInfo();
+            echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $rep[2]]);
         }
     }
 } catch (PDOException $e) {

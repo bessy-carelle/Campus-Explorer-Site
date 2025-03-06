@@ -19,13 +19,14 @@ try {
         $stmt = $con->prepare("INSERT INTO PhotoValides (idUser, idPhoto, idCible, nomPhoto, data)
             SELECT idUser, idPhoto, idCible, nomPhoto, data
             FROM Photos
-            WHERE idPhoto = :idPhoto"
+            WHERE idPhoto = :idPhoto;"
         );
         $stmt->bindParam(':idPhoto', $photo);
         if ($stmt->execute()) {
             echo json_encode(["status" => "OK", "message" => "Données insérées avec succès"]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $stmt->errorInfo()]);
+	    $rep = $stmt->errorInfo();
+            echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $rep[2]]);
         }
     }
 } catch (PDOException $e) {
