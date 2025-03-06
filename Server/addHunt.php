@@ -26,6 +26,7 @@ try {
         $basename = $fileInfo['basename'];
         $fileType = strtolower($fileInfo['extension']);
         $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        $dispo = 0;
 
         if (in_array($fileType, $allowedTypes)) {
             $targetDir ='../images/cibles/'; // Chemin vers le dossier cible
@@ -39,7 +40,7 @@ try {
                 $stmt->bindParam(':data',$chemin );
                 $stmt->bindParam(':hint', $hint);
                 $stmt->bindParam(':admin', $admin);
-                $stmt->bindParam(':dispo',0);
+                $stmt->bindParam(':dispo',$dispo);
 
                 if ($stmt->execute()) {
                     echo json_encode(["status" => "OK", "message" => "Image téléchargée et données insérées avec succès"]);
