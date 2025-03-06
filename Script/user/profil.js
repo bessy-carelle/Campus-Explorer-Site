@@ -77,7 +77,7 @@ if (userID){
                     //création balise article du html contenant les infos des bonnes photos déposées par l'utilisateur
                     const newBlock = `
                         <article class="flex-col flex-center">
-                            <img src = '${data}' class="gros-cible" alt="${nomPhoto}">
+                            <img src = '${data}' class="gros-cible cible" alt="${nomPhoto}">
                             <p class="flex-center texte">"${nomPhoto}"</p>
                         </article>
                     `
