@@ -33,7 +33,7 @@ if (!userID) {
 }
 
 
-// Fonction pour calculer le score en fonction des photos validées
+// Fonction pour calculer le score en fonction des photos validées.
 if (userID){
     fetch(`https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getUser.php?idUser=${userID}`)
     .then(response => response.json())
@@ -77,7 +77,7 @@ if (userID){
                     //création balise article du html contenant les infos des bonnes photos déposées par l'utilisateur
                     const newBlock = `
                         <article class="flex-col flex-center">
-                            <img src = 'data:image/jpeg;base64,${data}' class="gros-cible" alt="${nomPhoto}">
+                            <img src = '${data}' class="gros-cible" alt="${nomPhoto}">
                             <p class="flex-center texte">"${nomPhoto}"</p>
                         </article>
                     `
