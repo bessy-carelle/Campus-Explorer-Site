@@ -156,7 +156,7 @@ const stockerCibleSelectionne = () => {
                 cas.addEventListener('mouseleave', () => {
                     let messTag = cas.querySelector(".mess");
                     if (messTag) messTag.style.display = "none"
-                    window.location.href = "consultation_depot.html"
+                     window.location.href = "consultation_depot.html"
                 })
             });
         }
