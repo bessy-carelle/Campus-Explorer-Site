@@ -149,6 +149,7 @@ const stockerCibleSelectionne = () => {
                         if (!addPhReq.ok) throw new Error("Erreur de connexion au service");
                         let addPhReqJSON = await addPhReq.json();
                         if (addPhReqJSON.status === "error") throw new Error("Validation n'a pas pu aboutir");
+                        console.log(`clicked ${action}`)
                         showMessage("#ff9358", addPhReqJSON.status)
                     })();
                 } catch (error){ showMessage("#443b75", error) }
@@ -156,7 +157,7 @@ const stockerCibleSelectionne = () => {
                 cas.addEventListener('mouseleave', () => {
                     let messTag = cas.querySelector(".mess");
                     if (messTag) messTag.style.display = "none"
-                     window.location.href = "consultation_depot.html"
+                    window.location.href = "consultation_depot.html"
                 })
             });
         }
