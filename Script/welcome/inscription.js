@@ -1,4 +1,4 @@
-// Gestion du menu d�roulant
+// Gestion du menu deroulant
 let menuWrapper = document.querySelector(".menu-wrapper");
 let menuList = document.querySelector(".menu-list");
 let menuBtn = document.querySelector(".menu-btn");
@@ -23,30 +23,6 @@ if (menuBtn) {
         }
     });
 }
-
-
-// Vérification de l'email en temps réel
-// document.addEventListener("DOMContentLoaded", function () {
-//     let emailInput = document.getElementById("email");
-//     let emailLabel = document.getElementById("emailLabel");
-
-//     if (emailInput && emailLabel) {
-//         emailInput.addEventListener("input", function () {
-//             let email = emailInput.value.trim();
-//             let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-//             if (emailRegex.test(email)) {
-//                 emailLabel.textContent = "✅ Email valide";
-//                 emailLabel.style.color = "green";
-//             } else {
-//                 emailLabel.textContent = "❌ Email invalide";
-//                 emailLabel.style.color = "red";
-//             }
-//         });
-//     } else {
-//         console.error("L'input email ou son label est introuvable dans le DOM.");
-//     }
-// });
 
 // Gestion du formulaire d'inscription
 const form = document.getElementById("form-inscr");

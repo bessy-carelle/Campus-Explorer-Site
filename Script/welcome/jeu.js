@@ -1,3 +1,4 @@
+//Gestion du menu déroulant 
 let menuWrapper = document.querySelector(".menu-wrapper");
 let menuList = document.querySelector(".menu-list");
 let menuBtn = document.querySelector(".menu-btn");
@@ -17,6 +18,7 @@ menuBtn.addEventListener("click", () => {
     }
 });
 
+//Gestion de l'affichage des cibles
 document.addEventListener("DOMContentLoaded", () => {
     const xs = new XMLHttpRequest();
     xs.open("get", "https://mi-phpmut.univ-tlse2.fr/~rahman.djobo/Projet_php/PDO/getHunt.php?dispo=1");
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         img.alt = photo.nom;
                         img.classList.add("image-hover");
                         img.style.cursor = "pointer";
+                        img.style.display= ""
 
                         img.addEventListener("click", () => {
                             localStorage.setItem("selectedImage", JSON.stringify(photo));

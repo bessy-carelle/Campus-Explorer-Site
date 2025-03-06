@@ -1,5 +1,25 @@
+//Evenement vérifiant si l'utilisateur viens de la page deconnexion.html
 window.addEventListener("load", function () {
+    // Vérifie si on vient de la page de déconnexion
+    if (sessionStorage.getItem("fromLogout")) {
+        console.log("L'utilisateur vient de la page de déconnexion. Vidage du LocalStorage.");
+        
+        // Vider complètement le LocalStorage
+        localStorage.clear();
+
+        // Supprimer l'indicateur pour éviter un vidage au prochain chargement
+        sessionStorage.removeItem("fromLogout");
+    }
+});
+
+
+//Evenement qui s'éxecute quand la page est entièrement rechargée
+window.addEventListener("load", function () {
+
+        // Vérifie si la page a été rechargée en utilisant l'API Performance Navigation
     const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+        // Vérifie si c'est la première ouverture d'un onglet dans cette session (sessionStorage est vide)
     const firstVisit = !sessionStorage.getItem("tabOpened"); // Vérifie si un onglet est déjà ouvert
 
     if (firstVisit) {
@@ -8,15 +28,17 @@ window.addEventListener("load", function () {
 
         // Vider complètement le localStorage
         localStorage.clear();
+
     } else if (isReload) {
         console.log("La page a été rechargée !");
     }
 
-    // 🔹 Code que tu voulais modifier
+    // recupération des informations de l'utilisateur 
     const user = localStorage.getItem("iduser");
     const admin = localStorage.getItem("idadmin");
     const pseudo = localStorage.getItem("pseudo");
 
+    //Si la page est rechargée
     if (isReload) {
         console.log("Code exécuté lors d'un rechargement.");
 
@@ -27,7 +49,7 @@ window.addEventListener("load", function () {
         if (pseudo) localStorage.setItem("pseudo", pseudo);
     }
 
-    // 🔹 Masquer les boutons "Connexion" et "Inscription" si connecté
+    // 🔹 Masquer les boutons "Connexion" et "Inscription" si un quelconque utilisateur est connecté
     if (user || admin) {
         let connexionBtn = document.querySelector("nav .menu-list li:nth-child(1)");
         let inscriptionBtn = document.querySelector("nav .menu-list li:nth-child(2)");
@@ -85,7 +107,7 @@ if (menuBtn) {
     });
 }
 
-// Gestion de la connexion rapide
+// Gestion du boutton de profile
 let bonhomme = document.querySelector('.profile-icon-wrapper');
 if (bonhomme) {
     bonhomme.addEventListener('click', () => {
