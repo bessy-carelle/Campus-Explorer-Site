@@ -16,13 +16,13 @@ try {
     }
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $stmt = $con->prepare(" DELETE from PhotoValides WHERE idPhoto = :idPhoto");
+        $stmt = $con->prepare(" set FOREIGN_KEY_CHECKS = 0; DELETE from Photos WHERE idPhoto = :idPhoto");
         $stmt->bindParam(':idPhoto', $photo);
         if ($stmt->execute()) {
             echo json_encode(["status" => "OK", "message" => "Données supprimées avec succès"]);
         } else {
             $rep = $stmt -> errorInfo();
-            echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $rep[2]]);
+            echo json_encode(["status" => "error", "message" =>$rep[2]]);
         }
     }
 } catch (PDOException $e) {
