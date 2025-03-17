@@ -56,7 +56,7 @@ if (userID){
                 if (score >= 20) niveau = "Légende ";
                 else if (score >= 15) niveau = "Maître";
                 else if (score >= 8) niveau = "Expert ";
-                else if (score >= 3) niveau = "Apprenti";
+                else if (score >= 1) niveau = "Apprenti";
 
                 // Ajout du niveau à côté du score
                 badgeElt.textContent = niveau;
