@@ -18,7 +18,7 @@ try {
 
     // Validation de l'input
     $idPhoto = isset($_GET['idPhoto']) ? $_GET['idPhoto'] : null;
-    $idUser = isset($_SESSION['user']) ? $_SESSION['user']['idUser'] : null;
+    $idUser = isset($_GET['idUser']) ? $_GET['idUser'] : null;
 
     // Préparation de la requête SQL
     if (!empty($idPhoto)) {
