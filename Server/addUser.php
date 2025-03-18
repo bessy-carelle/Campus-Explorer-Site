@@ -37,10 +37,12 @@ try {
     // Préparation et exécution de la requête d'insertion
     //IMportant : Hachez le mot de passe
     //$crypte = password_hash($pass, PASSWORD_DEFAULT);
-    $stmt = $con->prepare("INSERT INTO Utilisateurs (pseudo, mail, passWord,token,verified) VALUES (:name, :mail, :pass,:token,:verif)");
+    $sco = 0;
+    $stmt = $con->prepare("INSERT INTO Utilisateurs (pseudo, mail, passWord,score,token,verified) VALUES (:name, :mail, :pass,:score,:token,:verif)");
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':mail', $mail);
     $stmt->bindParam(':pass', $pass);
+    $stmt->bindParam(':score',$sco);
     $stmt->bindParam(':token', $token);
     $stmt->bindParam(':verif', $verif);
     
